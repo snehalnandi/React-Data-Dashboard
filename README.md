@@ -1,124 +1,69 @@
 # Inventory & Data Analytics Dashboard
 
-A multi-page business dashboard built with **React** and **Tailwind CSS**, paired with **Python / Pandas** data analysis notebooks on the same dataset. Demonstrates frontend state management, live filtering, dark/light theming, and exploratory data analysis.
+A React dashboard prototype for browsing a fictional product inventory, alongside Jupyter notebooks that demonstrate introductory data analysis and cleaning with Pandas.
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-CodeSandbox-f7df1e?logo=codesandbox)](https://p63zhd.csb.app/)
+**Demo:** [Open the CodeSandbox demo](https://p63zhd.csb.app/)  
+**Source:** [Browse this repository](https://github.com/snehalnandi/React-Data-Dashboard)
 
----
+## What it demonstrates
 
-## Problem
+### React dashboard
+- Overview page with summary metrics and an inventory preview
+- Inventory table with live filtering by product name, SKU, or category
+- Customer directory showing order count and spend
+- Interactive settings toggles
+- Dark/light theme switching
+- Sidebar navigation and responsive layout
 
-Small businesses managing eco-friendly product inventories often rely on scattered spreadsheets with no live filtering, no visual overview, and no way to identify low-stock items quickly. Separately, raw sales data needs cleaning and exploration before it can drive decisions.
+The dashboard's sample inventory is defined in `App.jsx`; it is a frontend prototype, not a connected inventory service. There is no backend or database in this repository.
 
-This project addresses both problems: a web dashboard for real-time inventory navigation and a data notebook pipeline for order analysis.
+### Data analysis notebooks
 
----
+| Notebook | Focus |
+|---|---|
+| `01_Intro_to_Pandas_Analysis.ipynb` | Loading and inspecting tabular data, and computing basic totals |
+| `02_My_Solo_Code.ipynb` | Additional independent Pandas practice |
+| `03_Data_Cleaning.ipynb` | Missing values, type conversion, and duplicate handling |
 
-## Features
+## Technology
 
-### React Dashboard (`App.jsx`)
-- **Overview page** — at-a-glance metrics with a live inventory preview
-- **Inventory page** — searchable table filtering by product name, SKU, or category in real time
-- **Customers page** — customer directory table with order count and spend
-- **Settings page** — notification preference toggles with interactive switch UI
-- **Dark / Light mode** — toggleable via a single state flag; all colour tokens update instantly
-- **Responsive layout** — collapsible sidebar with icon + label navigation
+- **UI:** React, Tailwind CSS utility classes, lucide-react
+- **Data analysis:** Python, Pandas, Jupyter Notebook
+- **Demo hosting:** CodeSandbox (linked above)
 
-### Jupyter Notebooks
-| Notebook | Content |
-|----------|---------|
-| `01_Intro_to_Pandas_Analysis.ipynb` | Loading order data, `head()` / `info()` inspection, computing totals |
-| `02_My_Solo_Code.ipynb` | Independent analysis on the dataset |
-| `03_Data_Cleaning.ipynb` | Handling `NaN` values, type casting, deduplication |
+## Repository contents
 
----
-
-## Technology Stack
-
-| Layer | Technology |
-|-------|-----------|
-| UI Framework | React 18 |
-| Styling | Tailwind CSS |
-| Icons | lucide-react |
-| Data Analysis | Python 3, Pandas |
-| Notebooks | Google Colab / Jupyter |
-| Hosting | CodeSandbox |
-
----
-
-## Project Structure
-
-```
+```text
 React-Data-Dashboard/
-├── App.jsx                          # Main React application (dashboard UI)
+├── App.jsx
 ├── 01_Intro_to_Pandas_Analysis.ipynb
 ├── 02_My_Solo_Code.ipynb
 ├── 03_Data_Cleaning.ipynb
 └── README.md
 ```
 
----
+## Working with the notebooks
 
-## Running Locally
-
-### Dashboard (React)
-
-> **Prerequisites:** Node.js 18+
+Use Python 3.8 or newer. From the repository directory:
 
 ```bash
-# Install dependencies
-npm install react react-dom lucide-react
-
-# Start development server (if using Vite)
-npm run dev
+python -m pip install pandas jupyter
+jupyter notebook
 ```
 
-Or open the CodeSandbox link directly — no setup required.
+Then open one of the `.ipynb` files in the Jupyter interface. Notebook results can vary with package versions and execution order; restart the kernel and run cells from top to bottom if results are inconsistent.
 
-### Notebooks (Python)
+## Running the React source locally
 
-> **Prerequisites:** Python 3.8+, Pandas
+**Current limitation:** this repository contains the `App.jsx` component but does not currently include a `package.json`, HTML entry point, or Vite configuration. Therefore, `npm install` and `npm run dev` will not work from a fresh clone as it stands. Use the hosted demo, or add and test a proper React/Vite project scaffold before advertising local setup instructions.
 
-```bash
-pip install pandas jupyter
+## Scope and future work
 
-# Open any notebook
-jupyter notebook 01_Intro_to_Pandas_Analysis.ipynb
-```
+This is a learning and portfolio prototype. It does not currently connect to a real API or database and does not include an automated test suite.
 
-All notebooks also include an **"Open in Colab"** badge at the top — click it to run without any local setup.
-
----
-
-## Sample Dataset
-
-The dashboard uses a fictional eco-friendly product inventory:
-
-| SKU | Product | Category | Stock |
-|-----|---------|----------|-------|
-| SKU-JT01 | Printed Jute Tote | Bags | 15 |
-| SKU-BS02 | Braided Sling | Accessories | 4 |
-| SKU-ES03 | Bulk Export Sack | Industrial | 50 |
-| SKU-EH04 | Embroidered Handbag | Bags | 0 |
-
-The notebooks use a corresponding order ledger (`.csv`) with columns: `OrderID`, `Date`, `Product_SKU`, `Quantity`, `Unit_Price_INR`.
-
----
-
-## Security & Notes
-
-- All data is **fictional** — no real customer information is stored or transmitted
-- The dashboard runs entirely client-side; no backend or API keys required
-- Notebook outputs are pre-rendered for easy viewing without execution
-
----
-
-## Future Improvements
-
-> These are planned enhancements, not current features.
-
-- [ ] Connect dashboard to a real REST API or database
-- [ ] Add charts (bar/line) for stock trends and revenue over time
-- [ ] Integrate notebook analysis output as dashboard KPI cards
-- [ ] Add TypeScript types to the React components
-- [ ] Write unit tests with React Testing Library
+Possible next improvements:
+- Add a verified local React/Vite setup and lockfile
+- Add charts for stock and revenue trends
+- Connect the UI to an API or database
+- Add component tests and accessibility checks
+- Type the components with TypeScript
